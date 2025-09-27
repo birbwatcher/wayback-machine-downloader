@@ -1,0 +1,35 @@
+{
+  "name": "wayback-downloader",
+  "version": "0.1.0",
+  "description": "Interactive Wayback Machine downloader for archiving websites locally.",
+  "type": "module",
+  "main": "downloader.js",
+  "bin": {
+    "wayback-downloader": "downloader.js"
+  },
+  "scripts": {
+    "start": "node downloader.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "p-limit": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "wayback-machine-downloader",
+    "web-archive-downloder",
+    "archiver"
+  ],
+  "author": "birbwatcher",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/birbwatcher/wayback-downloader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/birbwatcher/wayback-downloader/issues"
+  },
+  "homepage": "https://github.com/birbwatcher/wayback-downloader#readme"
+}
