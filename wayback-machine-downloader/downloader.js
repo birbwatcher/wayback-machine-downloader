@@ -1,11 +1,11 @@
 /*
- * Wayback Machine Downloader 0.1 by WhitelightSEO — Interactive (Node.js, ESM)
+ * Wayback Machine Downloader 0.2 by WhitelightSEO — Interactive (Node.js, ESM)
  * Run: node downloader.js
  */
 
 import fs from "fs";
 import path from "path";
-import { fileURLToPath, pathToFileURL } from "url";
+import { fileURLToPath, pathToFileURL, domainToUnicode } from "url";
 import { mkdir } from "fs/promises";
 import pLimit from "p-limit";
 import { load } from "cheerio";
@@ -117,11 +117,12 @@ class WaybackMachineDownloader {
     try {
       if (this.base_url.includes("//")) {
         const u = new URL(this.base_url);
-        return u.host;
+        return domainToUnicode(u.host); // use human-readable domain
       }
     } catch {}
     return this.base_url;
   }
+
   backup_path() {
     if (this.directory) {
       return this.directory.endsWith(path.sep)
@@ -172,7 +173,7 @@ class WaybackMachineDownloader {
       const url = pair[1];
       try {
         const u = new URL(url);
-        const file_id = u.pathname;
+        const file_id = decodeURIComponent(u.pathname); // decode Cyrillic paths
         const prev = curated.get(file_id);
         if (!prev || prev.timestamp <= ts) {
           curated.set(file_id, { file_url: url, timestamp: ts, file_id });
@@ -190,6 +191,7 @@ class WaybackMachineDownloader {
       "%" + s.charCodeAt(0).toString(16)
     );
   }
+
   async _structure_dir_path(dir_path) {
     try {
       await mkdir(dir_path, { recursive: true });
@@ -265,7 +267,7 @@ class WaybackMachineDownloader {
       let html = fs.readFileSync(htmlPath, "utf8");
       const $ = load(html);
       const site = new URL(this.base_url);
-      const siteHost = site.hostname.replace(/^www\./, "");
+      const siteHost = domainToUnicode(site.hostname.replace(/^www\./, ""));
       const baseDir = path.dirname(htmlPath);
 
       const downloadTasks = [];
@@ -281,16 +283,17 @@ class WaybackMachineDownloader {
         try {
           const abs = new URL(val, pageUrl).toString();
           const u = new URL(abs);
-          const isInternal = u.hostname.replace(/^www\./, "") === siteHost;
+          const isInternal =
+            domainToUnicode(u.hostname.replace(/^www\./, "")) === siteHost;
 
           if (isInternal || this.download_external_assets) {
-            const file_id = u.pathname;
+            const file_id = decodeURIComponent(u.pathname);
             const paths = this._determine_paths(abs, file_id);
             if (!paths) return;
             const { dir_path, file_path } = paths;
 
             if (this.rewrite_links) {
-              const normPath = u.pathname + (u.hash || "");
+              const normPath = decodeURIComponent(u.pathname) + (u.hash || "");
               const localTarget = ensureLocalTargetForPath(normPath);
               const localAbsPath = path.join(backupRoot, localTarget);
               $(el).attr(attr, relativeLink(baseDir, localAbsPath));
@@ -315,10 +318,11 @@ class WaybackMachineDownloader {
           try {
             const abs = new URL(val, pageUrl).toString();
             const u = new URL(abs);
-            const isInternal = u.hostname.replace(/^www\./, "") === siteHost;
+            const isInternal =
+              domainToUnicode(u.hostname.replace(/^www\./, "")) === siteHost;
 
             if (isInternal) {
-              const normPath = u.pathname + (u.hash || "");
+              const normPath = decodeURIComponent(u.pathname) + (u.hash || "");
               const localTarget = ensureLocalTargetForPath(normPath);
               const localAbsPath = path.join(backupRoot, localTarget);
               $(el).attr(attr, relativeLink(baseDir, localAbsPath));

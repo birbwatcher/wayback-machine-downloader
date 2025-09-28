@@ -12,6 +12,20 @@ This webarchive website downloader has an interactive interface, supports downlo
 
 ---
 
+## Table of Contents
+
+- [Features of Web Archive Website Downloader](#features-of-web-archive-website-downloader)  
+  - [Special Features](#special-features)  
+- [Requirements](#requirements)  
+- [Installation](#installation)  
+- [Run](#run)  
+- [Example](#example)  
+- [Common Issues](#common-issues)  
+- [(Important) Download responsibly](#important-download-responsibly)  
+- [Contributing](#contributing)  
+
+---
+
 ## Features of Web Archive Website Downloader
 
 1. Download entire websites or individual pages from the archive, including HTML, images, scripts, styles, and other assets.  
