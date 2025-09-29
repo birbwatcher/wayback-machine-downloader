@@ -48,17 +48,32 @@ This webarchive website downloader has an interactive interface, supports downlo
 
 ## Installation
 
-```bash
-git clone https://github.com/birbwatcher/wayback-machine-downloader.git
-```
-go to inner folder "wayback-machine-downloader"
-```bash
-cd wayback-machine-downloader
-```
-```bash
-# Install dependencies
-npm install
-```
+# Installation
+
+1. Download the project in one of the following ways:  
+   - **Git instruction:**  
+     ```bash
+     git clone https://github.com/birbwatcher/wayback-machine-downloader.git
+     ```  
+   - **ZIP archive instruction:**  
+     Download .zip and extract it.  
+
+2. Go to the **inner `wayback-machine-downloader` folder**, where the `package.json` file is located:  
+   - If you cloned with Git:  
+     ```bash
+     cd wayback-machine-downloader/wayback-machine-downloader
+     ```  
+   - If you extracted the .zip:  
+     ```bash
+     cd wayback-machine-downloader-main/wayback-machine-downloader
+     ```  
+
+   ⚠️ Important: run commands from this folder (the one containing `package.json`).  
+
+3. Install dependencies:  
+   ```bash
+   npm install
+   ```  
 
 ---
 
