@@ -1,6 +1,6 @@
 {
   "name": "wayback-downloader",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Interactive Wayback Machine downloader for archiving websites locally.",
   "type": "module",
   "main": "downloader.js",

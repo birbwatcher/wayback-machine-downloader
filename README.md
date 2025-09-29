@@ -50,8 +50,12 @@ This webarchive website downloader has an interactive interface, supports downlo
 
 ```bash
 git clone https://github.com/birbwatcher/wayback-machine-downloader.git
+```
+go to inner folder "wayback-machine-downloader"
+```bash
 cd wayback-machine-downloader
-
+```
+```bash
 # Install dependencies
 npm install
 ```
