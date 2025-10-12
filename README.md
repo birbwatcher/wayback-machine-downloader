@@ -22,7 +22,7 @@ Got ideas or suggestions? Feel free to open an issue!
 - [Requirements](#requirements)  
 - [Installation](#installation)  
 - [Run](#run)
-- [Run in Docker](#run-in-docker-no-nodejs-installation-required)    
+- [Run in Docker](#-run-in-docker-no-nodejs-installation-required)    
 - [Example](#example)  
 - [Common Issues](#common-issues)  
 - [(Important) Download responsibly](#important-download-responsibly)  
@@ -167,7 +167,7 @@ For example: `https://example.com/*`, or try downloading a different time range.
 
 2. Some **styles or assets might be hosted on another domain**, for example on a CDN.  
    In this case, make sure to select "rewrite links" and "download external assets" during setup.  
-   The script will then also fetch resources from external domains.
+   The script will then also fetch resources from external domains.п
 
 3. The website might rely on **JavaScript frameworks** (like Angular or React) for rendering.  
    In such cases, downloading will be more difficult and can take considerably longer.
