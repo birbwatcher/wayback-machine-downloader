@@ -21,7 +21,8 @@ Got ideas or suggestions? Feel free to open an issue!
   - [Special Features](#special-features)  
 - [Requirements](#requirements)  
 - [Installation](#installation)  
-- [Run](#run)  
+- [Run](#run)
+- [Run in Docker](#run-in-docker-no-nodejs-installation-required)    
 - [Example](#example)  
 - [Common Issues](#common-issues)  
 - [(Important) Download responsibly](#important-download-responsibly)  
@@ -98,6 +99,37 @@ After launching, an interactive menu will appear with the following questions:
 
 ---
 
+# 🐳 Run in Docker (no Node.js installation required)
+
+You can also run the Wayback Machine Downloader inside a Docker container.  
+This allows you to use the tool without installing Node.js manually.
+
+### Go to the project directory
+Open your terminal and navigate to the folder **where the Dockerfile is located**.  
+For example, if you cloned the repository:
+
+```bash
+cd wayback-machine-downloader
+```
+
+### Build the image
+```bash
+docker build -t wayback-machine-downloader .
+```
+
+### Run interactively
+```bash
+docker run -it -v $(pwd)/websites:/app/websites wayback-machine-downloader
+```
+### Explanation:
+- `-it` — enables interactive input/output for the terminal (so you can answer questions).  
+- `-v $(pwd)/websites:/app/websites` — mounts the local `websites` folder so downloaded sites are saved on your machine.  
+
+After running, the same interactive menu will appear as with the standard Node.js run.  
+All archived websites will be saved locally in the `./websites` directory.
+
+---
+
 ## Example
 
 ```bash
@@ -127,6 +159,18 @@ After this, the archive download will begin.
 #### Script downloads only the homepage
 **Answer:** try specifying the base URL with `/*` at the end.  
 For example: `https://example.com/*`, or try downloading a different time range.  
+
+#### Website restored with broken layout, but it looks fine on Web Archive
+
+1. You may have restored the website with absolute links.  
+   This means it will only work correctly on its original domain and not when opened locally.
+
+2. Some **styles or assets might be hosted on another domain**, for example on a CDN.  
+   In this case, make sure to select "rewrite links" and "download external assets" during setup.  
+   The script will then also fetch resources from external domains.
+
+3. The website might rely on **JavaScript frameworks** (like Angular or React) for rendering.  
+   In such cases, downloading will be more difficult and can take considerably longer.
 
 ---
 
