@@ -10,6 +10,9 @@ Intended for use by:
 
 This webarchive website downloader has an interactive interface, supports downloading with either original links preserved or rewritten into relative ones (for local usage).  
 
+If this project helped you, consider giving it a ⭐  
+Got ideas or suggestions? Feel free to open an issue!
+
 ---
 
 ## Table of Contents
