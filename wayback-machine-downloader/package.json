@@ -1,14 +1,22 @@
 {
-  "name": "wayback-downloader",
+  "name": "wayback-machine-downloader",
   "version": "0.2.1",
   "description": "Interactive Wayback Machine downloader for archiving websites locally.",
   "type": "module",
-  "main": "downloader.js",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./downloader": "./lib/downloader.js",
+    "./downloader.js": "./lib/downloader.js",
+    "./cli": "./cli.js",
+    "./package.json": "./package.json"
+  },
   "bin": {
-    "wayback-downloader": "downloader.js"
+    "wayback-machine-downloader": "./cli.js"
   },
   "scripts": {
-    "start": "node downloader.js"
+    "start": "node cli.js",
+    "download": "node cli.js"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
@@ -17,19 +25,25 @@
   "engines": {
     "node": ">=18"
   },
+  "files": [
+    "cli.js",
+    "index.js",
+    "lib"
+  ],
   "keywords": [
-    "wayback-machine-downloader",
-    "web-archive-downloder",
-    "archiver"
+    "wayback",
+    "archive",
+    "downloader",
+    "wayback-machine"
   ],
   "author": "birbwatcher",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/birbwatcher/wayback-downloader.git"
+    "url": "https://github.com/birbwatcher/wayback-machine-downloader.git"
   },
   "bugs": {
-    "url": "https://github.com/birbwatcher/wayback-downloader/issues"
+    "url": "https://github.com/birbwatcher/wayback-machine-downloader/issues"
   },
-  "homepage": "https://github.com/birbwatcher/wayback-downloader#readme"
+  "homepage": "https://github.com/birbwatcher/wayback-machine-downloader#readme"
 }

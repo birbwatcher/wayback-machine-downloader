@@ -84,7 +84,7 @@ Got ideas or suggestions? Feel free to open an issue!
 ## Run
 
 ```bash
-node downloader.js
+node index.js
 ```
 
 After launching, an interactive menu will appear with the following questions:

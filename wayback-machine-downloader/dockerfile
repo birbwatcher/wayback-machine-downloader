@@ -7,7 +7,4 @@ RUN npm install --production
 
 COPY . .
 
-CMD ["node", "downloader.js"]
-
-ENTRYPOINT ["node", "downloader.js"]
-
+ENTRYPOINT ["node", "index.js"]
