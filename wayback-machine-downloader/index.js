@@ -1,5 +1,5 @@
 /*
- * Wayback Machine Downloader 0.3.0 by WhitelightSEO
+ * Wayback Machine Downloader 0.3.1 by WhitelightSEO
  * Run: node index.js
  */
 

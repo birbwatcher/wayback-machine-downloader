@@ -179,9 +179,32 @@ class WaybackMachineDownloader {
 
       await new Promise((resolve, reject) => {
         const ws = fs.createWriteStream(filePath);
-        Readable.fromWeb(res.body).pipe(ws);
-        ws.on("finish", resolve);
-        ws.on("error", reject);
+        const rs = Readable.fromWeb(res.body);
+
+        let settled = false;
+        const cleanupPartialFile = async () => {
+          try {
+            await fs.promises.rm(filePath, { force: true });
+          } catch {}
+        };
+
+        const handleStreamError = (err) => {
+          if (settled) return;
+          settled = true;
+          rs.destroy();
+          ws.destroy();
+          cleanupPartialFile().finally(() => reject(err));
+        };
+
+        rs.on("error", handleStreamError);
+        ws.on("error", handleStreamError);
+        ws.on("finish", () => {
+          if (settled) return;
+          settled = true;
+          resolve();
+        });
+
+        rs.pipe(ws);
       });
 
       const contentType = res.headers.get("content-type") || "";
