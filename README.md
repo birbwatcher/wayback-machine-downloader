@@ -17,16 +17,15 @@ Got ideas or suggestions? Feel free to open an issue!
 
 ## Table of Contents
 
-- [Features of Web Archive Website Downloader](#features-of-web-archive-website-downloader)  
-  - [Special Features](#special-features)  
-- [Requirements](#requirements)  
-- [Installation](#installation)  
-- [Run](#run)
-- [Run in Docker](#-run-in-docker-no-nodejs-installation-required)    
-- [Example](#example)  
-- [Common Issues](#common-issues)  
-- [(Important) Download responsibly](#important-download-responsibly)  
-- [Contributing](#contributing)  
+- 📁[Features of Web Archive Website Downloader](#features-of-web-archive-website-downloader)  
+  - 📄[Special Features](#special-features)  
+- 📁[Requirements](#requirements)  
+- 📁[Installation](#installation)  
+- 📁[Run](#run)
+- 📁[Run in Docker](#-run-in-docker-no-nodejs-installation-required)    
+- 📁[Example](#example)  
+- 📁[Common Issues](#common-issues)  
+- 📁[(Important) Download responsibly](#important-download-responsibly)    
 
 ---
 
@@ -180,14 +179,3 @@ Please note that downloading third-party websites may violate copyright laws.
 Use this tool responsibly and make sure not to break the law.  
 
 ---
-
-## Contributing
-
-Pull requests are welcome!  
-For major changes, please open an issue first to discuss what you would like to change.  
-
-1. Fork the project  
-2. Create your feature branch (`git checkout -b feature/fooBar`)  
-3. Commit your changes (`git commit -am 'Add some fooBar'`)  
-4. Push to the branch (`git push origin feature/fooBar`)  
-5. Create a new Pull Request  
