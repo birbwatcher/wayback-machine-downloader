@@ -57,7 +57,7 @@ class AssetManager {
     if (fileId.length > 200) return null;
 
     const backup = this.backupPath;
-    const parts = fileId.split("/").filter(Boolean);
+    const parts = fileId.split("/").filter(Boolean).map((p) => this.windowsSanitize(p));
     let dirPath;
     let filePath;
 
@@ -74,9 +74,6 @@ class AssetManager {
         filePath = path.join(backup, ...parts);
       }
     }
-
-    dirPath = this.windowsSanitize(dirPath);
-    filePath = this.windowsSanitize(filePath);
 
     return { dirPath, filePath };
   }
